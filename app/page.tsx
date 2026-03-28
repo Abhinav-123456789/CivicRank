@@ -291,11 +291,6 @@ export default function LandingPage() {
                   </span>
                 </button>
               </div>
-
-              {/* Animated ByteBuilders Glowing Badge */}
-              <div className="mt-20 flex justify-center">
-                <ByteBuildersBadge variant="inline" />
-              </div>
             </div>
           </div>
 
@@ -539,6 +534,11 @@ export default function LandingPage() {
         {/* Footer */}
         <footer className="py-12 border-t border-[rgba(255,255,255,0.05)]">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            {/* Animated ByteBuilders Glowing Badge */}
+            <div className="flex justify-center mb-8">
+              <ByteBuildersBadge variant="inline" />
+            </div>
+
             {/* Footer Links */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-muted-foreground pt-6">
               <div className="flex items-center gap-3">
