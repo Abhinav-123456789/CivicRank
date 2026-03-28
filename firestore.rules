@@ -1,0 +1,61 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ─── Helper functions ─────────────────────────────────────────────────────
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    function isOwner(resource) {
+      return isSignedIn() && resource.data.createdBy == request.auth.uid;
+    }
+
+    // Only allow safe fields on upvote — no other fields change
+    function isValidUpvote() {
+      let allowedFields = ['upvotes', 'upvotedBy', 'isVerified'].toSet();
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(allowedFields);
+    }
+
+    // ─── Issues ──────────────────────────────────────────────────────────────
+
+    match /issues/{issueId} {
+      // Anyone signed in can read
+      allow read: if isSignedIn();
+
+      // Anyone signed in can create a new issue
+      allow create: if isSignedIn()
+        && request.resource.data.createdBy == request.auth.uid;
+
+      // Upvote: signed-in user can only touch upvote fields
+      allow update: if isSignedIn() && isValidUpvote();
+
+      // Status changes + full update: admin only
+      allow update: if isAdmin();
+
+      // Delete: admin only
+      allow delete: if isAdmin();
+    }
+
+    // ─── Users ───────────────────────────────────────────────────────────────
+
+    match /users/{userId} {
+      // Users can read their own profile; admins can read anyone's
+      allow read: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+
+      // Users can only write their own profile (no role escalation)
+      allow write: if isSignedIn()
+        && request.auth.uid == userId
+        && (!('role' in request.resource.data) || request.resource.data.role == 'user');
+
+      // Admin can write any user profile (for role assignment)
+      allow write: if isAdmin();
+    }
+  }
+}
