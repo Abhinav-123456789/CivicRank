@@ -277,10 +277,6 @@ export default function LandingPage() {
                 Report issues, earn civic score, and transform your city through collective action.
               </p>
 
-              <p className="mt-6 text-sm text-gray-400">
-                Built by <span className="font-semibold text-gray-300 hover:text-neon-cyan transition-colors duration-300 cursor-pointer">ByteBuilders</span>
-              </p>
-
               <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5">
                 <button onClick={() => router.push("/login")} className="group relative px-8 py-4 rounded-xl bg-gradient-to-r from-neon-cyan to-blue-500 text-[#0a0a0a] font-bold uppercase tracking-wider text-sm hover:shadow-[0_0_25px_rgba(0,212,255,0.45)] hover:scale-105 transition-all duration-300">
                   <span className="flex items-center gap-2">
@@ -296,8 +292,8 @@ export default function LandingPage() {
                 </button>
               </div>
 
-              {/* Animated ByteBuilders Badge */}
-              <div className="mt-16 flex justify-center">
+              {/* Animated ByteBuilders Glowing Badge */}
+              <div className="mt-20 flex justify-center">
                 <ByteBuildersBadge variant="inline" />
               </div>
             </div>
@@ -542,38 +538,7 @@ export default function LandingPage() {
 
         {/* Footer */}
         <footer className="py-12 border-t border-[rgba(255,255,255,0.05)]">
-          <style>{`
-            @keyframes glow-text-pulse {
-              0%, 100% {
-                filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4)) drop-shadow(0 0 20px rgba(147, 51, 234, 0.2));
-              }
-              50% {
-                filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.6)) drop-shadow(0 0 30px rgba(147, 51, 234, 0.3));
-              }
-            }
-
-            .bytebuilders-glow {
-              animation: glow-text-pulse 3s ease-in-out infinite;
-            }
-
-            .bytebuilders-glow:hover {
-              animation: glow-text-pulse 1.5s ease-in-out infinite;
-            }
-          `}</style>
-          
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            {/* Branding Section */}
-            <div className="flex items-center justify-center py-6 border-b border-[rgba(255,255,255,0.05)]">
-              <p className="text-sm">
-                <span className="text-gray-400">Built by</span>{" "}
-                <span
-                  className="bytebuilders-glow font-semibold text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-blue-400 to-neon-purple cursor-pointer transition-all duration-300 hover:scale-105 inline-block"
-                >
-                  ByteBuilders
-                </span>
-              </p>
-            </div>
-            
             {/* Footer Links */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-muted-foreground pt-6">
               <div className="flex items-center gap-3">
