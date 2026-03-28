@@ -24,6 +24,7 @@ import {
   LogOut
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import ByteBuildersBadge from "@/components/ByteBuildersBadge"
 
 import { useAuth } from "@/hooks/useAuth"
 import { auth } from "@/lib/firebase"
@@ -293,6 +294,11 @@ export default function LandingPage() {
                     View City Map
                   </span>
                 </button>
+              </div>
+
+              {/* Animated ByteBuilders Badge */}
+              <div className="mt-16 flex justify-center">
+                <ByteBuildersBadge variant="inline" />
               </div>
             </div>
           </div>
