@@ -276,6 +276,10 @@ export default function LandingPage() {
                 Report issues, earn civic score, and transform your city through collective action.
               </p>
 
+              <p className="mt-6 text-sm text-gray-400">
+                Built by <span className="font-semibold text-gray-300 hover:text-neon-cyan transition-colors duration-300 cursor-pointer">ByteBuilders</span>
+              </p>
+
               <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5">
                 <button onClick={() => router.push("/login")} className="group relative px-8 py-4 rounded-xl bg-gradient-to-r from-neon-cyan to-blue-500 text-[#0a0a0a] font-bold uppercase tracking-wider text-sm hover:shadow-[0_0_25px_rgba(0,212,255,0.45)] hover:scale-105 transition-all duration-300">
                   <span className="flex items-center gap-2">
@@ -533,7 +537,15 @@ export default function LandingPage() {
         {/* Footer */}
         <footer className="py-12 border-t border-[rgba(255,255,255,0.05)]">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-muted-foreground">
+            {/* Branding Section */}
+            <div className="flex items-center justify-center py-6 border-b border-[rgba(255,255,255,0.05)]">
+              <p className="text-sm text-gray-500">
+                Built by <span className="font-semibold text-gray-400 hover:text-neon-cyan transition-colors duration-300 cursor-pointer">ByteBuilders</span>
+              </p>
+            </div>
+            
+            {/* Footer Links */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-muted-foreground pt-6">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-neon-cyan to-blue-500 flex items-center justify-center">
                   <MapPin className="w-4 h-4 text-[#0a0a0a]" />
